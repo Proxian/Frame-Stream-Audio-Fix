@@ -38,7 +38,7 @@ While a PC stream (`vrlink`) is running, it moves the real-time audio threads of
 In Desktop Mode, open Konsole:
 
 ```
-curl -fsSLO https://raw.githubusercontent.com/YOUR-USERNAME/frame-stream-audio-fix/main/frame-stream-audio-fix.sh
+curl -fsSLO https://raw.githubusercontent.com/Proxian/frame-stream-audio-fix/main/frame-stream-audio-fix.sh
 less frame-stream-audio-fix.sh        # read it first, it's short
 bash frame-stream-audio-fix.sh install
 ```
