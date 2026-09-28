@@ -19,7 +19,11 @@ NAME=frame-stream-audio-fix
 BIN="$HOME/.local/bin/$NAME"
 UNIT="$HOME/.config/systemd/user/$NAME.service"
 LOG="$HOME/.local/state/$NAME.log"
-export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"
+# Always use the real user session. In Desktop Mode, Konsole runs inside a nested
+# Plasma session with XDG_RUNTIME_DIR=/run/user/<uid>/nested_plasma, which has no
+# systemd user manager ("Failed to connect to user scope bus").
+export XDG_RUNTIME_DIR="/run/user/$(id -u)"
+[ -S "$XDG_RUNTIME_DIR/bus" ] && export DBUS_SESSION_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/bus"
 RK="org.freedesktop.RealtimeKit1 /org/freedesktop/RealtimeKit1 org.freedesktop.RealtimeKit1"
 
 log() { echo "$(date '+%F %T') $*" >> "$LOG"; }

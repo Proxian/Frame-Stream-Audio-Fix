@@ -1,0 +1,2 @@
+# The script runs on SteamOS; keep Unix line endings no matter where it is edited
+*.sh text eol=lf
